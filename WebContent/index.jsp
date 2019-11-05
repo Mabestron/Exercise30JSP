@@ -2,6 +2,7 @@
     pageEncoding="utf-8"%>
     
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>  
     
 <!DOCTYPE html>
 <html>
@@ -38,16 +39,27 @@
 
 <h3>Practice 4 Forms</h3>
 <form>
-<label for="txtNumber">Number: </label>
-<input class="form-control" type="text" id="txtNumber" name="txtNumber">
-<input class="btn btn-primary" type="submit" value="Square Number">
+	 	<label for="txtNumber">Number</label>
+	 	<input class="form-control" type="text" id="txtNumber" name="txtNumber">
+	 	<input class="btn btn-primary" type="submit" value="Square the Number">
+	 	The Square number is:
+	 	<c:set var="square" value="${param.txtNumber * param.txtNumber}"></c:set>
+	 	<c:out value="${square}"></c:out>
+	 	<c:if test="${square<100}">
+	 		<c:out value="Valor Chiquitu"></c:out>
+	 	</c:if>
+	 </form>
 
-The square number is: 
-<c:set var></c:set>
-<c:out value="${param.txtNumber*param.txtNumber}"></c:out>
-
-<c:if test=""></c:if>
-
+<h3>Practice 5 JSP Function</h3>
+<form>
+	<c:set var="miCadena" value="Welcome to JSP Programing"></c:set>
+	<p>
+	<c:out value="${fn:toUpperCase(miCadena)}"></c:out>
+	</p>
+	
+	<p>
+	<input class="btn btn-danger" type=button value="<c:out value="${fn:toUpperCase(miCadena)}"></c:out>">
+	</p>
 </form>
 
 
